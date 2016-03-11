@@ -35,3 +35,20 @@
 
 (f 3)
 (f 4)
+
+
+;; Ex 1.17 redefine multiplication function
+(define (mul a b)
+  (cond
+    ((= a 1) b)
+    ((= b 1) a)
+    ((even? a) (double (mul (halve a) b)))
+    ((even? b) (double (mul (halve b) a)))
+    (else (+ b (* (- a 1) b)))))
+
+(define (even? num)
+  (= (remainder num 2) 0))
+
+(define (double x) (+ x x))
+(define (halve x) (/ x 2))
+(mul 3 5)
